@@ -1,0 +1,20 @@
+Newton's 1st Law
+A body remains at rest, or in motion at a constant speed in a straight line, unless it is acted upon by a force
+Newton's 2nd Law
+At any instant of time, the net force on a body is equal to the body's acceleration multiplied by its mass or equivalently, the rate at which the body's momentum is changing with time
+Newton's 3rd Law
+If two bodies exert forces on each other, these forces have the same magnitude but opposite directions
+Kepler's 1st Law of Planetary Motion
+The orbit of a planet is an ellipse with the Sun at one of the two foci. In a two-body system, both planets will move with unique elliptical orbits about the center of mass of the system (defined as barycenter), which sits at one of the foci of each of their respective orbits.
+Kepler's 2nd Law of Planetary Motion
+A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.
+Kepler's 3rd Law of Planetary Motion
+The square of a planet's orbital period is proportional to the cube of the length of the semi-major axis of its orbit.
+0th Law of Thermodynamics
+If two systems are each in thermal equilibrium with a third system, then they are in thermal equilibrium with each other.
+1st Law of Thermodynamics
+When energy passes into or out of a system (as work, heat, or matter), the system's internal energy changes in accordance with the law of conservation of energy. This also results in the observation that, in an externally isolated system, even with internal changes, the sum of all forms of energy must remain constant, as energy cannot be created or destroyed. 
+2nd Law of Thermodynamics
+(1) Entropy tends to increase over time. (2) No heat engine can have a 100% thermal efficiency. (3) Head does not flow spontaneously from a cold object to a hot object, such an operation requires the input of work.
+3rd Law of Thermodynamics
+Entropy approaches a constant value as the temperature approaches absolute zero.

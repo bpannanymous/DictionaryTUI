@@ -1,0 +1,8 @@
+Gauss's Law
+∇ · E = ρ/ε₀
+Gauss's Law for Magnetism
+∇ · B = 0
+Faraday's Law
+∇ × E = -∂B/∂t
+Ampere's Law
+∇ × B = μ₀J + μ₀ε₀(∂E/∂t)
