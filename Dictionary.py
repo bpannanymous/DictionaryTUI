@@ -309,8 +309,6 @@ def NewDict(ActiveDirectory):
                 break
             #if wants to continue
             else:
-                print(ActiveDirectory)
-                print(FileName)
                 #make file path
                 FilePath=ActiveDirectory+'/'+FileName
                 #output message to denote file creation
