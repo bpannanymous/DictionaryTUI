@@ -273,6 +273,7 @@ def DelDict(ActiveDirectory):
                 #response message and delay
                 print('File successfully deleted')
                 time.sleep(1)
+                Functions.Space(1)
 
 #creates dictionary
 def NewDict(ActiveDirectory):
@@ -289,6 +290,10 @@ def NewDict(ActiveDirectory):
         else:
             #request new file name
             FileName=input('Filename: ')
+            #remove all spaces from input
+            FileName=Functions.RemoveCharacter(FileName,' ')
+            #verify input is not an empty string
+            FileName=Functions.EdgeCase(FileName,'Filename: ',' ')
             #add txt suffix to name
             FileName+='.txt'
             #check if proposed filename is already used
@@ -304,8 +309,10 @@ def NewDict(ActiveDirectory):
                 break
             #if wants to continue
             else:
+                print(ActiveDirectory)
+                print(FileName)
                 #make file path
-                FilePath=ActiveDirectory / FileName
+                FilePath=ActiveDirectory+'/'+FileName
                 #output message to denote file creation
                 print('Creating Dictionary...')
                 #1 second delay
@@ -315,6 +322,7 @@ def NewDict(ActiveDirectory):
                     pass
                 print(FileName, 'successfully created')
                 time.sleep(1) #1 second delay
+                Functions.Space(1)
 
 #deleting archive
 def DelArc(ActiveDirectory):
@@ -359,6 +367,7 @@ def DelArc(ActiveDirectory):
                 #response message and delay
                 print('Archive successfully deleted')
                 time.sleep(1)
+                Functions.Space(1)
 
 #creates dictionary
 def NewArc(ActiveDirectory):
@@ -375,6 +384,10 @@ def NewArc(ActiveDirectory):
         else:
             #request new file name
             Archive=input('New Archive Name: ')
+            #remove all spaces from input
+            Archive=Functions.RemoveCharacter(Archive,' ')
+            #verify input is not an empty string
+            Archive=Functions.EdgeCase(Archive,'New Archive Name: ',' ')
             #check if proposed filename is already used
             if Archive not in archives: #if file does not exist
                 #request confirmation
@@ -398,14 +411,35 @@ def NewArc(ActiveDirectory):
                 Path(DirectoryPath).mkdir()
                 print(Archive, 'successfully created')
                 time.sleep(1) #1 second delay
+                Functions.Space(1)
+#clears screen
+def clear():
+    print("\033[2J\033[H", end="") #clear terminal function in ASCII
 
-
+#===
+#intro message
+#===
+clear()
+Functions.thickLine(30)
+Functions.Space(1)
+Intro='DictionaryTUI'
+repo='https://github.com/bpannanymous/DictionaryTUI/'
+contactinfo='bpanna@proton.me'
+print(Intro)
+Functions.Space(1)
+print('Repository: ',repo)
+print('Contact Information: ',contactinfo)
+Functions.Space(1)
+Functions.thickLine(30)
+input('Press ENTER to continue. ')
+clear()
 
 #===
 #looped execution
 #===
 #ask for initial operation
 path=Functions.ArchiveStart()
+clear()
 while True:
     if path=='S':
         Directory=Functions.SelectDir(PARENT)
@@ -415,9 +449,11 @@ while True:
             if answer=='R':
                 #list/select active dictionary
                 File=Functions.Select(Directory)
+                clear()
                 #order of reviewing dictionary
                 order=Functions.Order()
                 #review
+                clear()
                 Review(File,order)
                 #ask for desired operation before reiterating while loop
                 answer=Functions.Start()
@@ -464,6 +500,13 @@ while True:
     elif path=='D':
         #delete archive
         DelArc(PARENT)
+        #start menu
+        path=Functions.ArchiveStart()
+    elif path=='L':
+        #list current archives
+        Functions.ListDir(PARENT)
+        #wait for user input to advance
+        input('Press ENTER to return to previous menu. ')
         #start menu
         path=Functions.ArchiveStart()
     else:

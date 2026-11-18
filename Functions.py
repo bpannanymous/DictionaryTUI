@@ -10,10 +10,9 @@ import os
 
 #list directories in log directory
 def ListDir(ParentDirectory):
-    print('')
-    print('======================================')
+    thickLine(30)
     print('Current Archives')
-    print('======================================')
+    thickLine(30)
     print('')
     #assign all directories to a list
     directories=[f for f in os.listdir(ParentDirectory) if os.path.isdir(os.path.join(ParentDirectory,f))]
@@ -21,17 +20,16 @@ def ListDir(ParentDirectory):
     for f in directories:
         print(f) #print list element
     print('')
-    print('======================================')
+    thickLine(30)
     print('')
     #return all directories
     return directories
 
 #lists all files in log directory
 def ListFiles(Directory):
-    print('')
-    print('======================================')
+    thickLine(30)
     print('Current Dictionaries')
-    print('======================================')
+    thickLine(30)
     print('')
     #assign all files in directory to a list
     files=[f for f in os.listdir(Directory) if os.path.isfile(os.path.join(Directory,f))]
@@ -39,7 +37,7 @@ def ListFiles(Directory):
     for f in files:
         print(f)
     print('')
-    print('======================================')
+    thickLine(30)
     print('')
     #return all files
     return files
@@ -132,14 +130,15 @@ def Action():
 #archive selection menu
 def ArchiveStart():
     while True:
+        #clear terminal
+        print("\033[2J\033[H", end="")
         #tui separation
-        print('')
         thickLine(30)
         print('Options')
         thickLine(30)
         print('')
         #options string
-        options=['Select Archive (S)','New Archive (N)','Delete Archive (D)','Exit Application (E)']
+        options=['Select Archive (S)','New Archive (N)','Delete Archive (D)','List Archives (L)','Exit Application (E)']
         #print options
         for i in range(len(options)):
             print(options[i])
@@ -148,7 +147,7 @@ def ArchiveStart():
         #ask what they would like to do
         choice=str(input('Desired Action?: '))
         #check if the input was workable
-        if choice=='S' or choice=='N' or choice=='E' or choice=='D':
+        if choice=='S' or choice=='N' or choice=='E' or choice=='L' or choice=='D':
             #break the loop
             break
         #if input now workable
@@ -156,12 +155,16 @@ def ArchiveStart():
             #request restatemtn of action
             print('Invalid Response. Please input a single, capitalized letter corresponding to the action you wish to complete')
     print('')
+    #clear terminal
+    print("\033[2J\033[H", end="")
     #return the stored answer
     return choice
 
 #start selection menu
 def Start():
     while True:
+        #clear terminal
+        print("\033[2J\033[H", end="")
         #tui separation
         print('')
         thickLine(30)
@@ -186,6 +189,8 @@ def Start():
             #request restatemtn of action
             print('Invalid Response. Please input a single, capitalized letter corresponding to the action you wish to complete')
     print('')
+    #clear terminal
+    print("\033[2J\033[H", end="")
     #return the stored answer
     return choice
 
@@ -244,7 +249,6 @@ def SelectDir(ParentDirectory):
     ListDir(ParentDirectory)
     #request directory input
     ChildDirectory=InputDir(ParentDirectory)
-    print(ChildDirectory)
     #return selection
     return ChildDirectory
 
@@ -300,3 +304,18 @@ def Order():
     #return the stored answer
     return order
 
+#ensures an empty name is not passed
+def EdgeCase(string,prompt,character):
+    while True: #iterate until specified otherwise
+        if string=='': #if an empty string is passed
+            print('Invalid input. Empty input cannot be accepted')
+            string=input(prompt)
+            string=RemoveCharacter(string,character)
+        else: #if non-empty string is passed
+            break #ignore and pass value
+    return string #return value
+
+#removes character
+def RemoveCharacter(string,character):
+    character=str(character)
+    return string.replace(character,'') #return rectified string
